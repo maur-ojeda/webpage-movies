@@ -20,7 +20,7 @@ const Pagination = (props) => {
                     <span>Page {props.page} of {props.total}:</span>
 
                     {/*
-TODO: loop que pone paginas por cantidad de items/ items a mostrar  y asigna clases activa a pagina actual 
+TODO: loop que pone paginas por cantidad de items/ items a mostrar  y asigna clases activa a página actual 
 https://youtu.be/5DAEdXKp7QA?t=6918
 */}
 
