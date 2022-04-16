@@ -6,12 +6,31 @@ import './Pagewrapper'
 import { Pagewrapper } from './Pagewrapper';
 import Movies from './movies.json'
 import Pagination from './Pagination';
+import { useState } from 'react';
 
 function App() {
 
-  let movies = Movies;
+//initial State 
+const [currentPage, setcurrentPage] = useState(1);
+const total_for_page = 10;
+// movies to show 
+let movies = Movies;
 
+const loadMovies = () => { 
+  movies = movies.slice(
+    (currentPage - 1) * total_for_page ,
+     currentPage + total_for_page
+     )
+  
+}
+ 
+   const getTotalPages = () => {
+      
+    let totalMovies = Movies.length / total_for_page
+    return Math.ceil(totalMovies)
+   }
 
+   loadMovies();
   return (
     <Pagewrapper>
 
@@ -33,11 +52,12 @@ function App() {
         )
       })}
 
-      <Pagination page={2} total={4} onChange={(page) => {
-        alert(page)
-        //
-
-      }} />
+      <Pagination 
+        page={currentPage}
+        total={getTotalPages()}
+        onChange={ 
+          (currentPage) => { setcurrentPage(currentPage)}
+          } />
 
 
 
