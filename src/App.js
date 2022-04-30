@@ -28,28 +28,33 @@ let totalMovies = Movies.length / total_for_page
 return Math.ceil(totalMovies)
 }
 
-const searchMovies = () => {
-  let url = 'https://raw.githubusercontent.com/maur-ojeda/webpage-movies/6b61ce86b4e5954a8433608f6d869c5645567ebc/src/movies.json'
+const searchMovies = async() => {
+  //const searchMovies = () => {
+  let url = 'https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/maur-ojeda/webpage-movies/6b61ce86b4e5954a8433608f6d869c5645567ebc/src/movies.json'
 
 // using fetch
-  var result = fetch( url, {
+  let result = await fetch( url, {
+// var result = fetch( url, {
     "method": "GET",
     "headers": {
       "Accept": "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Origin": "https://raw.githubusercontent.com/"
     }
-    }).then(
+    })
+    let json  = await result.json();
+    /*.then(
       result => {
         alert(result)
         return result
       }
-    )
+    )*/
 
-var refult 
+alert(json) 
 
 }
 
-
+  searchMovies();
    loadMovies();
   return (
     <Pagewrapper>
